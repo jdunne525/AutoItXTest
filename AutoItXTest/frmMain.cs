@@ -20,10 +20,13 @@ namespace AutoitxTest
         IniFile ini;
         private NotifyIcon myTrayIcon;
         private ContextMenu myTrayIconContextMenu;
+        public bool AppRunning;
 
         public frmMain()
         {
             InitializeComponent();
+
+            AppRunning = true;
 
             //Pull in some settings from an ini file:
             ini = new IniFile(Application.StartupPath + "\\AutoItX.ini");
@@ -98,6 +101,7 @@ namespace AutoitxTest
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            AppRunning = false;   
             myTrayIcon.Dispose();
         }
 
